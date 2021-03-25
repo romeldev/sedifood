@@ -1,0 +1,11 @@
+tipo de regimen			    Regime              regimes
+tipo de ingredientes		SupplyType          food_groups
+clasificacion preparaciones	PreparationType     preparation_types
+tipo de comida			    FoodType (cena)     food_types
+tipo de moneda			    Coin                monedas
+profesional			        Profesional         profesionals
+
+
+ingredientes			    Supply              insumo
+preparaciones			    Preparation         
+programations			    Programation

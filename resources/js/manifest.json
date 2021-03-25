@@ -1,0 +1,14 @@
+{
+    "name": "WooRest",
+    "short-name": "sedirest",
+    "description": "Sistema para administracion de restaurantes, punto de venta, comandas tablet",
+    "background-color": "#DA74F9",
+    "teme-color": "#749CF9",
+    "display": "standalone",
+    "orientation": "landscape",
+    "start_url": "/?utm_source=web_app_manifest",
+    "scope": "./",
+    "icons": [
+        { "src": "./img/logo-app.svg", "sizes": "any" }
+    ]
+}
