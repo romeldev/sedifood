@@ -6,7 +6,7 @@ use App\BaseModel;
 
 class FoodType extends BaseModel
 {
-    public $table = 'food_Types';
+    public $table = 'food_types';
 
     protected $fillable = [ 
         'descrip',
