@@ -63,13 +63,18 @@ class Report extends BaseModel
 
     public static function generate($reportname, $params)
     {
+        //verificar que exista la carpeta temporal para la generacion de reportes
+        if( !Storage::disk('local')->exists('ireport/tmp')){
+            Storage::disk('local')->makeDirectory('ireport/tmp');
+        }
+
         $input = Storage::path("ireport/reports/$reportname.jasper");
 
         if (!Storage::disk('local')->exists("/ireport/reports/$reportname.jasper")) {
             throw new \Exception("La plantilla de report $reportname.jasper no existe", 500);
         }
 
-        $output = base_path("storage/app/ireport/results/$reportname");
+        $output = base_path("storage/app/ireport/tmp/$reportname");
 
         $driver = config('database.default');
         $db = config("database.connections.$driver");
@@ -83,11 +88,13 @@ class Report extends BaseModel
                 'password' => $db['password'],
                 'host' => $db['host'],
                 'database' => $db['database'],
-                'port' => $db['port']
+                'port' => $db['port'],
             ]
         ];
-        // dd($options);
 
+        if( !env('JASPER_SSL', true) ){
+            $options['db_connection']['jdbc_url'] = 'jdbc:mysql://'.$db['host'].':3306/'.$db['database'].'?autoReconnect=true&useSSL=false';
+        }
 
         $jasper = new PHPJasper;
 
