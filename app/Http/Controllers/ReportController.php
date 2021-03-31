@@ -14,6 +14,10 @@ class ReportController extends Controller
 
         $input = Storage::path("/ireport/templates/$reportName.jasper");
 
+        if (!Storage::disk('local')->exists("/ireport/templates/$reportName.jasper")) {
+            dd("/ireport/templates/$reportName.jasper not found!");
+        }
+
         $output = base_path("/storage/app/ireport/results/$reportName");
 
         $options = [ 

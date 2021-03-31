@@ -9,3 +9,38 @@ profesional			        Profesional         profesionals
 ingredientes			    Supply              insumo
 preparaciones			    Preparation         
 programations			    Programation
+
+
+
+ALTER TABLE regimes ADD PRIMARY KEY(id);
+ALTER TABLE regimes MODIFY COLUMN id INT auto_increment;
+ALTER TABLE food_groups ADD PRIMARY KEY(id);
+ALTER TABLE food_groups MODIFY COLUMN id INT auto_increment;
+ALTER TABLE preparation_types ADD PRIMARY KEY(id);
+ALTER TABLE preparation_types MODIFY COLUMN id INT auto_increment;
+ALTER TABLE food_types ADD PRIMARY KEY(id);
+ALTER TABLE food_types MODIFY COLUMN id INT auto_increment;
+ALTER TABLE professionals ADD PRIMARY KEY(id);
+ALTER TABLE professionals MODIFY COLUMN id INT auto_increment;
+ALTER TABLE insumo ADD PRIMARY KEY(id_insumo);
+ALTER TABLE insumo MODIFY COLUMN id_insumo INT auto_increment;
+ALTER TABLE nutrients ADD PRIMARY KEY(id);
+ALTER TABLE nutrients MODIFY COLUMN id INT auto_increment;
+ALTER TABLE preparations ADD PRIMARY KEY(id);
+ALTER TABLE preparations MODIFY COLUMN id INT auto_increment;
+ALTER TABLE preparation_details ADD PRIMARY KEY(id);
+ALTER TABLE preparation_details MODIFY COLUMN id INT auto_increment;
+ALTER TABLE programmings ADD PRIMARY KEY(id);
+ALTER TABLE programmings MODIFY COLUMN id INT auto_increment;
+ALTER TABLE programming_details ADD PRIMARY KEY(id);
+ALTER TABLE programming_details MODIFY COLUMN id INT auto_increment;
+
+
+
+    
+
+
+
+
+
+

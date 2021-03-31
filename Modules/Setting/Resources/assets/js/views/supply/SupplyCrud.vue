@@ -252,7 +252,7 @@ export default {
                 const {data} = await this.form.get(`/common`, {params})
                 this.meta = data
             } catch (error) {
-                this.$toast(params.service, 'danger')
+                this.$toast(error.message, 'danger')
             }
         },
 
