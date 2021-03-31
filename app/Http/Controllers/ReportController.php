@@ -12,13 +12,13 @@ class ReportController extends Controller
     {
         $reportName = 'report1';
 
-        $input = Storage::path("/ireport/templates/$reportName.jasper");
+        $input = Storage::path("ireport/templates/$reportName.jasper");
 
         if (!Storage::disk('local')->exists("/ireport/templates/$reportName.jasper")) {
             dd("/ireport/templates/$reportName.jasper not found!");
         }
 
-        $output = base_path("/storage/app/ireport/results/$reportName");
+        $output = base_path("storage/app/ireport/results/$reportName");
 
         dd([ 'input' => $input, 'output' => $output ]);
 
