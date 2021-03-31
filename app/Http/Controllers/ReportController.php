@@ -20,6 +20,8 @@ class ReportController extends Controller
 
         $output = base_path("/storage/app/ireport/results/$reportName");
 
+        dd([ 'input' => $input, 'output' => $output ]);
+
         $options = [ 
             'format' => ['pdf'] 
         ];
