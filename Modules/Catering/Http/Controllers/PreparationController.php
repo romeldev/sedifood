@@ -16,10 +16,18 @@ class PreparationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data = Preparation::all();
-        return response()->json( PreparationResource::collection($data) );
+        $data = Preparation::where('company_id', $request->warehouse_id)
+        ->search($request->search)
+        
+        ->with(['preparationType'])
+        ->with(['preparationDetails' => function($query){
+            return $query->with(['supply', 'unit']);
+        }])
+        ->orderBy('descrip', 'asc')->paginate(10);
+
+        return PreparationResource::collection($data);
     }
 
     /**

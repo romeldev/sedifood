@@ -36,6 +36,9 @@ ALTER TABLE programming_details ADD PRIMARY KEY(id);
 ALTER TABLE programming_details MODIFY COLUMN id INT auto_increment;
 
 
+java jasperstarter process "/home/admin/web/sedifood.yodira.com/public_html/storage/app/ireport/templates/report1.jasper" -o "/home/admin/web/sedifood.yodira.com/public_html/storage/app/ireport/results/report1" -f pdf
+
+
 
     
 

@@ -16,10 +16,28 @@ class ProgrammingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data = Programming::orderBy('date', 'desc')->get();
-        return response()->json( ProgrammingResource::collection($data) );
+        $validator = Validator::make($request->all(), [
+            'warehouse_id' => "required|integer|gt:0",
+            'date_from' => 'required|date',
+            'date_to' => 'required|date|after_or_equal:date_from',
+        ]);
+
+        if( $validator->fails() ){
+            return response()->json($validator->messages(), 422);
+        }
+
+        $data = Programming::orderBy('date', 'desc')
+        ->where('company_id', $request->warehouse_id)
+        ->whereDate('date', '>=', $request->date_from)
+        ->whereDate('date', '<=', $request->date_to)
+        ->with(['professional', 'regime', 'foodType', 'programmingDetails'=>function($query){
+            return $query->with('preparation');
+        }])
+        ->get();
+
+        return response()->json(ProgrammingResource::collection($data));
     }
 
     /**

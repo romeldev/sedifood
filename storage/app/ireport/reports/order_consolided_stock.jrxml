@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="order_consolided_stock" language="groovy" pageWidth="595" pageHeight="842" whenNoDataType="BlankPage" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="71440ecf-943d-419e-a285-e91c1ff0c1c9">
+	<property name="ireport.zoom" value="1.4641000000000013"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="COMPANY_ID" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[2]]></defaultValueExpression>
+	</parameter>
+	<parameter name="DATE_FROM" class="java.util.Date">
+		<defaultValueExpression><![CDATA[new java.util.Date(System.currentTimeMillis())]]></defaultValueExpression>
+	</parameter>
+	<parameter name="DATE_TO" class="java.util.Date">
+		<defaultValueExpression><![CDATA[new java.util.Date(System.currentTimeMillis())]]></defaultValueExpression>
+	</parameter>
+	<parameter name="REGIME_ID" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[0]]></defaultValueExpression>
+	</parameter>
+	<parameter name="FOOD_TYPE_ID" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[0]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[call get_stocked_consolided_orders($P{COMPANY_ID}, $P{DATE_FROM}, $P{DATE_TO}, $P{REGIME_ID}, $P{FOOD_TYPE_ID})]]>
+	</queryString>
+	<field name="food_id" class="java.lang.Integer"/>
+	<field name="food_descrip" class="java.lang.String"/>
+	<field name="amount" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="stock" class="java.math.BigDecimal"/>
+	<field name="type_symbol" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="40" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="10" width="555" height="20" uuid="196e82c8-3bfd-472d-9014-0cfc6bb8a690"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["REPORTE DE ORDEN DE PEDIDO "
++" DEL "+(new SimpleDateFormat("dd/MM/yyyy").format($P{DATE_FROM}))
++" AL "+(new SimpleDateFormat("dd/MM/yyyy").format($P{DATE_TO}))]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="266" height="20" uuid="5832c66e-e1ed-4394-bc15-c31b95010512"/>
+				<box>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[INSUMO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="342" y="0" width="76" height="20" uuid="e1f95a05-8b8c-41e5-9308-5ada5796ecc5"/>
+				<box>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[CANTIDAD]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="494" y="0" width="61" height="20" uuid="edbfe641-12b7-4ca2-9345-d8ca9c76d93c"/>
+				<box>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[UNI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="266" y="0" width="76" height="20" uuid="67111360-3221-42f1-a55a-bcc164f61b0f"/>
+				<box>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[STOCK]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="418" y="0" width="76" height="20" uuid="9f2a6db6-476d-4d2f-a422-3135958fd0e3"/>
+				<box>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[CANTIDAD]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="266" height="20" uuid="9c4046e9-e850-4899-97d4-371437c505b9"/>
+				<box leftPadding="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{food_descrip}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement x="342" y="0" width="76" height="20" uuid="0744366e-2e8f-44e5-8113-b17fdba5e782"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{amount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="494" y="0" width="61" height="20" uuid="ec417009-1bdb-4bb7-8534-95b0b58df958"/>
+				<box leftPadding="5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{type_symbol}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement x="266" y="0" width="76" height="20" uuid="818d54a8-a2d1-4e3c-8d4e-c39cb1a65b11"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{stock}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement x="418" y="0" width="76" height="20" uuid="958b2589-f764-44a2-a82c-4b9c52f31d18"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{amount}-$F{stock}>=0? $F{amount}-$F{stock}: 0]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

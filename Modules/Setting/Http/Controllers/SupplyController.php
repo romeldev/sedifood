@@ -18,11 +18,14 @@ class SupplyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data = Supply::where('estado', 1)->orderBy('id_insumo', 'desc')->get();
-
-        return response()->json( SupplyResource::collection($data) );
+        // $data = Supply::where('estado', 1)->orderBy('id_insumo', 'desc')->get();
+        $data = Supply::search($request->search)
+        ->where('estado', 1)
+        ->orderBy('id_insumo', 'desc')->with('supplyType')
+        ->paginate(10);
+        return SupplyResource::collection($data);
     }
 
     /**
@@ -35,7 +38,7 @@ class SupplyController extends Controller
     {
         $unitTypes = Param::unitTypes()->pluck('value')->toArray();
         $rules = [
-            'name' => "required|unique:insumo,nombre,NULL,id_insumo",
+            'name' => "required|unique:insumo,nombre,NULL,id_insumo,estado,1",
             'unit_type' => "required|in:".implode(',', $unitTypes),
             'supply_type_id' => "required|exists:food_groups,id",
             'grams' => "required",
@@ -90,7 +93,7 @@ class SupplyController extends Controller
     {
         $unitTypes = Param::unitTypes()->pluck('value')->toArray();
         $rules = [
-            'name' => "required|unique:insumo,nombre,$supply->id,id_insumo",
+            'name' => "required|unique:insumo,nombre,$supply->id,id_insumo,estado,1",
             'unit_type' => "required|in:".implode(',', $unitTypes),
             'supply_type_id' => "required|exists:food_groups,id",
             'grams' => "required",
@@ -130,6 +133,15 @@ class SupplyController extends Controller
      */
     public function destroy(Supply $supply)
     {
-        //
+        DB::beginTransaction();
+        try {
+            $success = $supply->update(['estado' => 0]);
+            // return response()->json( success );
+            DB::commit();
+            return response()->json( $success );
+        } catch (\Exception $e) {
+            DB::rollback();
+            return response()->json($e->getMessage(), 501);
+        }
     }
 }

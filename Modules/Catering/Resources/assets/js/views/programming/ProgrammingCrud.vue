@@ -83,7 +83,7 @@
                                             <v-autocomplete dense single-line
                                                 ref="autocompletePreparation"
                                                 v-model="searchedPreparation"
-                                                :items="orderedPreparations"
+                                                :items="meta.preparations"
                                                 label="Agregar preparacion"
                                                 item-text="descrip"
                                                 return-object
@@ -153,45 +153,60 @@
                     
                     @click="openForm()"
                 ><v-icon>mdi-plus</v-icon></v-btn>
-
                 <v-spacer></v-spacer>
-                
 
+                <v-select dense style="width:200px;"
+                    v-model="filter.warehouse_id"
+                    :items="meta.warehouses"
+                    single-line
+                    label="Almacen*"
+                    item-value="id"
+                    item-text="name"
+                    hide-details="auto"
+                    :error="filter.errors.has('warehouse_id')"
+                    :error-messages="filter.errors.get('warehouse_id')"
+                    clearable
+                ></v-select>
             </v-card-title>
 
             <v-card-text>
                 <v-row>
-                    <v-col cols="12" sm="6">
-                        <v-select dense outlined
-                            v-model="filter.warehouse"
-                            :items="meta.warehouses"
-                            label="Almacen*"
-                            item-value="id"
-                            item-text="name"
-                            hide-details="auto"
-                            return-object
-                            clearable
-                        ></v-select>
-                    </v-col>
-
-                    <v-col cols="12" sm="6">
-                        <v-text-field dense
-                            type="search"
-                            v-model="filter.search"
-                            append-icon="mdi-magnify"
-                            label="Buscar"
+                    <v-col cols="12" sm="4">
+                        <v-text-field dense type="date"
+                            v-model="filter.date_from"
+                            label="Desde*"
                             single-line
-                            hide-details
+                            hide-details="auto"
+                            :error="filter.errors.has('date_from')"
+                            :error-messages="filter.errors.get('date_from')"
                         ></v-text-field>
+                    </v-col>
+                    <v-col cols="12" sm="4">
+                        <v-text-field dense type="date"
+                            v-model="filter.date_to"
+                            label="Hasta*"
+                            single-line
+                            hide-details="auto"
+                            :error="filter.errors.has('date_to')"
+                            :error-messages="filter.errors.get('date_to')"
+                        ></v-text-field>
+                    </v-col>
+                    <v-col cols="12" sm="4">
+                        <v-btn @click="getItems" :loading="loading" :disabled="loading">
+                            Buscar
+                            <v-icon right>mdi-magnify</v-icon>
+                        </v-btn>
                     </v-col>
                 </v-row>
             </v-card-text>
 
-            <v-data-table
+            <v-data-table dense
                 :headers="headers"
                 :items="items"
                 :loading="loading"
-                :search="filter.search"
+                disable-sort
+                disable-pagination
+                hide-default-footer
             >
                 <template v-slot:[`item.date`]="{ item }">
                     <!-- {{ item.date | moment('timezone', 'America/Lima', 'L')}} -->
@@ -207,6 +222,8 @@
                     </v-icon>
                 </template>
             </v-data-table>
+
+
         </v-card>
     </div>
 </template>
@@ -225,12 +242,11 @@ export default {
             searchedPreparation: null,
             selectedWarehouse: null,
 
-            // warehouse: { id: this.$store.getters.warehouseId },
-
-
-            filter: {
-                search: null,
-            },
+            filter: new Form({
+                warehouse_id: this.$store.getters.warehouseId,
+                date_from: this.$moment().format('YYYY-MM-DD'),
+                date_to: this.$moment().format('YYYY-MM-DD'),
+            }),
 
             form: new Form({
                 id: null,
@@ -261,12 +277,6 @@ export default {
 
             meta: { professionals: [], regimes: [], food_types: [], preparations: [], warehouses: [] },
         }
-    },
-
-    computed: {
-        orderedPreparations() {
-            return this.meta.preparations.sort((a, b) => a.descrip.localeCompare(b.descrip) );
-        },
     },
 
     mounted() {
@@ -307,11 +317,11 @@ export default {
 
                 this.form.date = this.$moment(this.form.date).format('YYYY-MM-DD');
             }else {
-                if( !this.filter.warehouse ){
+                if( !this.filter.warehouse_id ){
                     this.$toast('Seleccione un almacen', 'warning')
                     return;
                 }
-                this.form.warehouse_id = this.filter.warehouse.id;
+                this.form.warehouse_id = this.filter.warehouse_id;
             }
             this.dialog = true
         },
@@ -326,14 +336,20 @@ export default {
                 const {data} = await this.form.get(`/common`, {params})
                 this.meta = data
             } catch (error) {
-                this.$toast(params.service, 'danger')
+                this.$toast(error.message, 'danger')
             }
         },
 
         async getItems() {
             try {
+                this.items = []
                 this.loading = true
-                const { data }  = await this.form.get(`/${this.resource}`)
+                const params = {
+                    warehouse_id: this.filter.warehouse_id,
+                    date_from: this.filter.date_from,
+                    date_to: this.filter.date_to,
+                }
+                const { data }  = await this.filter.get(`/${this.resource}`, {params})
                 this.items = data
             } catch (error) {
                 this.$toast(error.message, 'danger')

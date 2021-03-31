@@ -121,50 +121,43 @@
                 ><v-icon>mdi-plus</v-icon></v-btn>
 
                 <v-spacer></v-spacer>
-                <v-text-field dense
-                    type="search"
-                    v-model="filter.search"
-                    append-icon="mdi-magnify"
-                    label="Buscar"
+                <v-select dense style="width:200px;"
+                    v-model="filter.warehouse_id"
+                    :items="meta.warehouses"
                     single-line
-                    hide-details
-                ></v-text-field>
+                    label="Almacen*"
+                    item-value="id"
+                    item-text="name"
+                    hide-details="auto"
+                    :error="filter.errors.has('warehouse_id')"
+                    :error-messages="filter.errors.get('warehouse_id')"
+                ></v-select>
             </v-card-title>
 
             <v-card-text>
                 <v-row>
                     <v-col cols="12" sm="6">
-                        <v-select dense outlined
-                            v-model="filter.warehouse"
-                            :items="meta.warehouses"
-                            label="Almacen*"
-                            item-value="id"
-                            item-text="name"
-                            hide-details="auto"
-                            return-object
-                            readonly
-                        ></v-select>
-                    </v-col>
-                    <v-col cols="12" sm="6">
-                        <v-select dense outlined
-                            v-model="filter.preparation_type"
-                            :items="meta.preparation_types"
-                            label="Categoria*"
-                            item-value="id"
-                            item-text="descrip"
-                            hide-details="auto"
-                            return-object
-                            clearable
-                        ></v-select>
+                        <v-text-field dense
+                            type="search"
+                            v-model="filter.search"
+                            append-icon="mdi-magnify"
+                            label="Buscar"
+                            single-line
+                            hide-details
+                            @click:append="getItems"
+                            @search="getItems"
+                        ></v-text-field>
                     </v-col>
                 </v-row>
             </v-card-text>
 
-            <v-data-table
+            <v-data-table dense
                 :headers="headers"
-                :items="filteredItems"
+                :items="dataItems.data"
                 :loading="loading"
-                :search="filter.search"
+                disable-sort
+                disable-pagination
+                hide-default-footer
             >
                 <template v-slot:[`item.roles`]="{ item }">
                     {{ item.roles.map( r => r.name).toString() }}
@@ -179,6 +172,19 @@
                     </v-icon>
                 </template>
             </v-data-table>
+
+            <v-card-actions>
+                <v-row>
+                    <v-col cols="12" class="text-center">
+                        <v-pagination
+                            v-model="dataItems.meta.current_page"
+                            :length="dataItems.meta.last_page"
+                            :total-visible="7"
+                            @input="getItems"
+                        ></v-pagination>
+                    </v-col>
+                </v-row>
+            </v-card-actions>
         </v-card>
     </div>
 </template>
@@ -196,11 +202,10 @@ export default {
             saving: false,
             searchedSupply: null,
 
-            filter: {
-                warehouse: { id: this.$store.getters.warehouseId },
-                preparation_type: null,
+            filter: new Form({
+                warehouse_id: this.$store.getters.warehouseId,
                 search: null,
-            },
+            }),
 
             form: new Form({
                 id: null,
@@ -223,7 +228,7 @@ export default {
                 { text: 'Accion', value: 'action', sortable: false },
             ],
 
-            items: [],
+            dataItems: { meta: {}, data: [] },
 
             meta: { preparation_types: [], supplies: [], units: [], warehouses: [] },
         }
@@ -281,7 +286,6 @@ export default {
         },
 
         removeSupply(supply, index) {
-            // const index = this.form.preparation_supplies.find( ps => ps.supply_id === supply.id)
             this.form.preparation_details.splice(index, 1)
         },
 
@@ -291,11 +295,11 @@ export default {
             if (item !== null) {
                 this.form.fill(JSON.parse(JSON.stringify(item)))
             }else {
-                if( !this.filter.warehouse ){
+                if( !this.filter.warehouse_id ){
                     this.$toast('Seleccione un almacen', 'warning')
                     return;
                 }
-                this.form.warehouse_id = this.filter.warehouse.id;
+                this.form.warehouse_id = this.filter.warehouse_id;
             }
             this.dialog = true
         },
@@ -314,11 +318,17 @@ export default {
             }
         },
 
-        async getItems() {
+        async getItems( page=1 ) {
             try {
+                this.dataItems = { meta: {}, data: [] },
                 this.loading = true
-                const { data }  = await this.form.get(`/${this.resource}`)
-                this.items = data
+                const params = { 
+                    page: page,
+                    warehouse_id: this.filter.warehouse_id,
+                    search: this.filter.search
+                }
+                const { data }  = await this.filter.get(`/${this.resource}`, {params})
+                this.dataItems = data
             } catch (error) {
                 this.$toast(error.message, 'danger')
             } finally {
@@ -330,7 +340,7 @@ export default {
             try {
                 this.form.clear()
                 this.saving = true
-                const itemIndex = this.items.findIndex(x => x.id===this.form.id)
+                const itemIndex = this.dataItems.data.findIndex(x => x.id===this.form.id)
 
                 if( action==='delete' && !confirm("¿Realmente desea eliminar el registro?") ){
                     this.dialog = false
@@ -340,22 +350,23 @@ export default {
                 const { data } = await this.form.req(`/${this.resource}`, action)
 
                 if (action === 'create') {
-                    this.items.unshift(data)
                     this.$toast('registro creado!', 'success')
+                    this.filter.search = data.descrip
+                    this.getItems()
                 }
                 if (action === 'edit') {
-                    this.items.splice(itemIndex, 1, data)
                     this.$toast('registro actualizado!', 'success')
+                    this.dataItems.data.splice(itemIndex, 1, data)
                 }
                 if (action === 'delete') {
-                    this.items.splice(itemIndex, 1)
                     this.$toast('registro eliminado!', 'success')
+                    this.getItems()
                 }
                 this.dialog = false
             } catch (error) {
-                // if (error.response && error.response.status !== 422) {
+                if (error.response && error.response.status !== 422) {
                     this.$toast(error.message, 'danger')
-                // }
+                }
             } finally {
                 this.saving = false
             }

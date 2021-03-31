@@ -1,0 +1,1063 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="842" pageHeight="595" orientation="Landscape" whenNoDataType="BlankPage" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e9cc8423-7e9a-4b50-bff5-b09ec3a98b90">
+	<property name="ireport.zoom" value="1.5394743546921272"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="23"/>
+	<parameter name="DATE_FROM" class="java.util.Date">
+		<defaultValueExpression><![CDATA[new java.util.Date(System.currentTimeMillis())]]></defaultValueExpression>
+	</parameter>
+	<parameter name="DATE_TO" class="java.util.Date">
+		<defaultValueExpression><![CDATA[new java.util.Date(System.currentTimeMillis())]]></defaultValueExpression>
+	</parameter>
+	<parameter name="COMPANY_ID" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[3]]></defaultValueExpression>
+	</parameter>
+	<parameter name="REGIME_ID" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[1013]]></defaultValueExpression>
+	</parameter>
+	<parameter name="FOOD_TYPE_ID" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[12]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[call get_programming_nutrients($P{COMPANY_ID}, $P{DATE_FROM}, $P{DATE_TO}, $P{REGIME_ID}, $P{FOOD_TYPE_ID})]]>
+	</queryString>
+	<field name="company_id" class="java.math.BigInteger">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="date" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="professional_id" class="java.math.BigInteger">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="professional_fullname" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="professional_profession" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="professional_code" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="regime_id" class="java.math.BigInteger">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="regime_descrip" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="food_type_id" class="java.math.BigInteger">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="food_type_descrip" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="preparation_id" class="java.math.BigInteger">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="preparation_descrip" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="food_id" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="food_descrip" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="portions" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="amount" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="unit_id" class="java.math.BigInteger">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="unit_type" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="amount_min" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="unit_abrev_min" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="amount_sta" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="unit_abrev_sta" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="energy_kcal" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="water_g" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="proteinins_g" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="total_fat_g" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="total_carbohydrates_g" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="disp_carbohydrates_g" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="raw_fiber_g" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="dietary_fiber_g" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="calcium_mg" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="match_mg" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="zinc_mg" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="iron_mg" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="carotene_ug" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="retinol_ug" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="vitamin_a_ug" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="thiamine_mg" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="reboflavin_mg" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="niacin_mg" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="vitamin_c_mg" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="asct_g" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="sodium_mg" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cholesterol_mg" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="potassium_mg" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="omega3" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="omega6" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="saturated_fat_g" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="trans_fat_g" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="magnetium_mg" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="iodine_mg" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="selenium_ug" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="folic_acid_ug" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="vitamin_d_ug" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="vitamin_b1_mg" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="vitamin_b2_mg" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="b12_vitamin_mg" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="copper_ug" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="mercury_ug" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="lead_ug" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="aluminum_mg" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cadmium_ug" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="arsenic_ug" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="dha_mg" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ara_mg" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<variable name="P_AMOUNT" class="java.math.BigDecimal" resetType="Group" resetGroup="PREPARATION" calculation="Sum">
+		<variableExpression><![CDATA[$F{amount_min}]]></variableExpression>
+	</variable>
+	<variable name="P_ENERGY_KCAL" class="java.math.BigDecimal" resetType="Group" resetGroup="PREPARATION" calculation="Sum">
+		<variableExpression><![CDATA[$F{energy_kcal}]]></variableExpression>
+	</variable>
+	<variable name="P_WATER_G" class="java.math.BigDecimal" resetType="Group" resetGroup="PREPARATION" calculation="Sum">
+		<variableExpression><![CDATA[$F{water_g}]]></variableExpression>
+	</variable>
+	<variable name="P_PROTEININS_G" class="java.math.BigDecimal" resetType="Group" resetGroup="PREPARATION" calculation="Sum">
+		<variableExpression><![CDATA[$F{proteinins_g}]]></variableExpression>
+	</variable>
+	<variable name="P_TOTAL_FAT_G" class="java.math.BigDecimal" resetType="Group" resetGroup="PREPARATION" calculation="Sum">
+		<variableExpression><![CDATA[$F{total_fat_g}]]></variableExpression>
+	</variable>
+	<variable name="P_TOTAL_CARBOHYDRATES_G" class="java.math.BigDecimal" resetType="Group" resetGroup="PREPARATION" calculation="Sum">
+		<variableExpression><![CDATA[$F{total_carbohydrates_g}]]></variableExpression>
+	</variable>
+	<variable name="P_DISP_CARBOHYDRATES_G" class="java.math.BigDecimal" resetType="Group" resetGroup="PREPARATION" calculation="Sum">
+		<variableExpression><![CDATA[$F{disp_carbohydrates_g}]]></variableExpression>
+	</variable>
+	<variable name="P_RAW_FIBER_G" class="java.math.BigDecimal" resetType="Group" resetGroup="PREPARATION" calculation="Sum">
+		<variableExpression><![CDATA[$F{raw_fiber_g}]]></variableExpression>
+	</variable>
+	<variable name="P_DIETARY_FIBER_G" class="java.math.BigDecimal" resetType="Group" resetGroup="PREPARATION" calculation="Sum">
+		<variableExpression><![CDATA[$F{dietary_fiber_g}]]></variableExpression>
+	</variable>
+	<variable name="P_CALCIUM_MG" class="java.math.BigDecimal" resetType="Group" resetGroup="PREPARATION" calculation="Sum">
+		<variableExpression><![CDATA[$F{calcium_mg}]]></variableExpression>
+	</variable>
+	<variable name="P_MATCH_MG" class="java.math.BigDecimal" resetType="Group" resetGroup="PREPARATION" calculation="Sum">
+		<variableExpression><![CDATA[$F{match_mg}]]></variableExpression>
+	</variable>
+	<variable name="P_ZINC_MG" class="java.math.BigDecimal" resetType="Group" resetGroup="PREPARATION" calculation="Sum">
+		<variableExpression><![CDATA[$F{zinc_mg}]]></variableExpression>
+	</variable>
+	<variable name="P_IRON_MG" class="java.math.BigDecimal" resetType="Group" resetGroup="PREPARATION" calculation="Sum">
+		<variableExpression><![CDATA[$F{iron_mg}]]></variableExpression>
+	</variable>
+	<variable name="P_CAROTENE_UG" class="java.math.BigDecimal" resetType="Group" resetGroup="PREPARATION" calculation="Sum">
+		<variableExpression><![CDATA[$F{carotene_ug}]]></variableExpression>
+	</variable>
+	<variable name="P_RETINOL_UG" class="java.math.BigDecimal" resetType="Group" resetGroup="PREPARATION" calculation="Sum">
+		<variableExpression><![CDATA[$F{retinol_ug}]]></variableExpression>
+	</variable>
+	<variable name="P_VITAMIN_A_UG" class="java.math.BigDecimal" resetType="Group" resetGroup="PREPARATION" calculation="Sum">
+		<variableExpression><![CDATA[$F{vitamin_a_ug}]]></variableExpression>
+	</variable>
+	<variable name="P_THIAMINE_MG" class="java.math.BigDecimal" resetType="Group" resetGroup="PREPARATION" calculation="Sum">
+		<variableExpression><![CDATA[$F{thiamine_mg}]]></variableExpression>
+	</variable>
+	<variable name="P_REBOFLAVIN_MG" class="java.math.BigDecimal" resetType="Group" resetGroup="PREPARATION" calculation="Sum">
+		<variableExpression><![CDATA[$F{reboflavin_mg}]]></variableExpression>
+	</variable>
+	<variable name="P_NIACIN_MG" class="java.math.BigDecimal" resetType="Group" resetGroup="PREPARATION" calculation="Sum">
+		<variableExpression><![CDATA[$F{niacin_mg}]]></variableExpression>
+	</variable>
+	<variable name="P_VITAMIN_C_MG" class="java.math.BigDecimal" resetType="Group" resetGroup="PREPARATION" calculation="Sum">
+		<variableExpression><![CDATA[$F{vitamin_c_mg}]]></variableExpression>
+	</variable>
+	<variable name="P_ASCT_G" class="java.math.BigDecimal" resetType="Group" resetGroup="PREPARATION" calculation="Sum">
+		<variableExpression><![CDATA[$F{asct_g}]]></variableExpression>
+	</variable>
+	<variable name="P_SODIUM_MG" class="java.math.BigDecimal" resetType="Group" resetGroup="PREPARATION" calculation="Sum">
+		<variableExpression><![CDATA[$F{sodium_mg}]]></variableExpression>
+	</variable>
+	<variable name="P_CHOLESTEROL_MG" class="java.math.BigDecimal" resetType="Group" resetGroup="PREPARATION" calculation="Sum">
+		<variableExpression><![CDATA[$F{cholesterol_mg}]]></variableExpression>
+	</variable>
+	<variable name="P_POTASSIUM_MG" class="java.math.BigDecimal" resetType="Group" resetGroup="PREPARATION" calculation="Sum">
+		<variableExpression><![CDATA[$F{potassium_mg}]]></variableExpression>
+	</variable>
+	<variable name="P_OMEGA3" class="java.math.BigDecimal" resetType="Group" resetGroup="PREPARATION" calculation="Sum">
+		<variableExpression><![CDATA[$F{omega3}]]></variableExpression>
+	</variable>
+	<variable name="P_OMEGA6" class="java.math.BigDecimal" resetType="Group" resetGroup="PREPARATION" calculation="Sum">
+		<variableExpression><![CDATA[$F{omega6}]]></variableExpression>
+	</variable>
+	<variable name="P_SATURATED_FAT_G" class="java.math.BigDecimal" resetType="Group" resetGroup="PREPARATION" calculation="Sum">
+		<variableExpression><![CDATA[$F{saturated_fat_g}]]></variableExpression>
+	</variable>
+	<variable name="P_TRANS_FAT_G" class="java.math.BigDecimal" resetType="Group" resetGroup="PREPARATION" calculation="Sum">
+		<variableExpression><![CDATA[$F{trans_fat_g}]]></variableExpression>
+	</variable>
+	<variable name="P_MAGNETIUM_MG" class="java.math.BigDecimal" resetType="Group" resetGroup="PREPARATION" calculation="Sum">
+		<variableExpression><![CDATA[$F{magnetium_mg}]]></variableExpression>
+	</variable>
+	<variable name="P_IODINE_MG" class="java.math.BigDecimal" resetType="Group" resetGroup="PREPARATION" calculation="Sum">
+		<variableExpression><![CDATA[$F{iodine_mg}]]></variableExpression>
+	</variable>
+	<variable name="P_SELENIUM_UG" class="java.math.BigDecimal" resetType="Group" resetGroup="PREPARATION" calculation="Sum">
+		<variableExpression><![CDATA[$F{selenium_ug}]]></variableExpression>
+	</variable>
+	<variable name="P_FOLIC_ACID_UG" class="java.math.BigDecimal" resetType="Group" resetGroup="PREPARATION" calculation="Sum">
+		<variableExpression><![CDATA[$F{folic_acid_ug}]]></variableExpression>
+	</variable>
+	<variable name="P_VITAMIN_D_UG" class="java.math.BigDecimal" resetType="Group" resetGroup="PREPARATION" calculation="Sum">
+		<variableExpression><![CDATA[$F{vitamin_d_ug}]]></variableExpression>
+	</variable>
+	<variable name="P_VITAMIN_B1_MG" class="java.math.BigDecimal" resetType="Group" resetGroup="PREPARATION" calculation="Sum">
+		<variableExpression><![CDATA[$F{vitamin_b1_mg}]]></variableExpression>
+	</variable>
+	<variable name="P_VITAMIN_B2_MG" class="java.math.BigDecimal" resetType="Group" resetGroup="PREPARATION" calculation="Sum">
+		<variableExpression><![CDATA[$F{vitamin_b2_mg}]]></variableExpression>
+	</variable>
+	<variable name="P_B12_VITAMIN_MG" class="java.math.BigDecimal" resetType="Group" resetGroup="PREPARATION" calculation="Sum">
+		<variableExpression><![CDATA[$F{b12_vitamin_mg}]]></variableExpression>
+	</variable>
+	<variable name="P_COPPER_UG" class="java.math.BigDecimal" resetType="Group" resetGroup="PREPARATION" calculation="Sum">
+		<variableExpression><![CDATA[$F{copper_ug}]]></variableExpression>
+	</variable>
+	<variable name="P_MERCURY_UG" class="java.math.BigDecimal" resetType="Group" resetGroup="PREPARATION" calculation="Sum">
+		<variableExpression><![CDATA[$F{mercury_ug}]]></variableExpression>
+	</variable>
+	<variable name="P_LEAD_UG" class="java.math.BigDecimal" resetType="Group" resetGroup="PREPARATION" calculation="Sum">
+		<variableExpression><![CDATA[$F{lead_ug}]]></variableExpression>
+	</variable>
+	<variable name="P_ALUMINUM_MG" class="java.math.BigDecimal" resetType="Group" resetGroup="PREPARATION" calculation="Sum">
+		<variableExpression><![CDATA[$F{aluminum_mg}]]></variableExpression>
+	</variable>
+	<variable name="P_CADMIUM_UG" class="java.math.BigDecimal" resetType="Group" resetGroup="PREPARATION" calculation="Sum">
+		<variableExpression><![CDATA[$F{cadmium_ug}]]></variableExpression>
+	</variable>
+	<variable name="P_ARSENIC_UG" class="java.math.BigDecimal" resetType="Group" resetGroup="PREPARATION" calculation="Sum">
+		<variableExpression><![CDATA[$F{arsenic_ug}]]></variableExpression>
+	</variable>
+	<variable name="P_DHA_MG" class="java.math.BigDecimal" resetType="Group" resetGroup="PREPARATION" calculation="Sum">
+		<variableExpression><![CDATA[$F{dha_mg}]]></variableExpression>
+	</variable>
+	<variable name="P_ARA_MG" class="java.math.BigDecimal" resetType="Group" resetGroup="PREPARATION" calculation="Sum">
+		<variableExpression><![CDATA[$F{ara_mg}]]></variableExpression>
+	</variable>
+	<variable name="T_AMOUNT" class="java.math.BigDecimal" resetType="Group" resetGroup="FOOD_TYPE" calculation="Sum">
+		<variableExpression><![CDATA[$F{amount_min}]]></variableExpression>
+	</variable>
+	<variable name="T_ENERGY_KCAL" class="java.math.BigDecimal" resetType="Group" resetGroup="FOOD_TYPE" calculation="Sum">
+		<variableExpression><![CDATA[$F{energy_kcal}]]></variableExpression>
+	</variable>
+	<variable name="T_WATER_G" class="java.math.BigDecimal" resetType="Group" resetGroup="FOOD_TYPE" calculation="Sum">
+		<variableExpression><![CDATA[$F{water_g}]]></variableExpression>
+	</variable>
+	<variable name="T_PROTEININS_G" class="java.math.BigDecimal" resetType="Group" resetGroup="FOOD_TYPE" calculation="Sum">
+		<variableExpression><![CDATA[$F{proteinins_g}]]></variableExpression>
+	</variable>
+	<variable name="T_TOTAL_FAT_G" class="java.math.BigDecimal" resetType="Group" resetGroup="FOOD_TYPE" calculation="Sum">
+		<variableExpression><![CDATA[$F{total_fat_g}]]></variableExpression>
+	</variable>
+	<variable name="T_TOTAL_CARBOHYDRATES_G" class="java.math.BigDecimal" resetType="Group" resetGroup="FOOD_TYPE" calculation="Sum">
+		<variableExpression><![CDATA[$F{total_carbohydrates_g}]]></variableExpression>
+	</variable>
+	<variable name="T_DISP_CARBOHYDRATES_G" class="java.math.BigDecimal" resetType="Group" resetGroup="FOOD_TYPE" calculation="Sum">
+		<variableExpression><![CDATA[$F{disp_carbohydrates_g}]]></variableExpression>
+	</variable>
+	<variable name="T_RAW_FIBER_G" class="java.math.BigDecimal" resetType="Group" resetGroup="FOOD_TYPE" calculation="Sum">
+		<variableExpression><![CDATA[$F{raw_fiber_g}]]></variableExpression>
+	</variable>
+	<variable name="T_DIETARY_FIBER_G" class="java.math.BigDecimal" resetType="Group" resetGroup="FOOD_TYPE" calculation="Sum">
+		<variableExpression><![CDATA[$F{dietary_fiber_g}]]></variableExpression>
+	</variable>
+	<variable name="T_CALCIUM_MG" class="java.math.BigDecimal" resetType="Group" resetGroup="FOOD_TYPE" calculation="Sum">
+		<variableExpression><![CDATA[$F{calcium_mg}]]></variableExpression>
+	</variable>
+	<variable name="T_MATCH_MG" class="java.math.BigDecimal" resetType="Group" resetGroup="FOOD_TYPE" calculation="Sum">
+		<variableExpression><![CDATA[$F{match_mg}]]></variableExpression>
+	</variable>
+	<variable name="T_ZINC_MG" class="java.math.BigDecimal" resetType="Group" resetGroup="FOOD_TYPE" calculation="Sum">
+		<variableExpression><![CDATA[$F{zinc_mg}]]></variableExpression>
+	</variable>
+	<variable name="T_IRON_MG" class="java.math.BigDecimal" resetType="Group" resetGroup="FOOD_TYPE" calculation="Sum">
+		<variableExpression><![CDATA[$F{iron_mg}]]></variableExpression>
+	</variable>
+	<variable name="T_CAROTENE_UG" class="java.math.BigDecimal" resetType="Group" resetGroup="FOOD_TYPE" calculation="Sum">
+		<variableExpression><![CDATA[$F{carotene_ug}]]></variableExpression>
+	</variable>
+	<variable name="T_RETINOL_UG" class="java.math.BigDecimal" resetType="Group" resetGroup="FOOD_TYPE" calculation="Sum">
+		<variableExpression><![CDATA[$F{retinol_ug}]]></variableExpression>
+	</variable>
+	<variable name="T_VITAMIN_A_UG" class="java.math.BigDecimal" resetType="Group" resetGroup="FOOD_TYPE" calculation="Sum">
+		<variableExpression><![CDATA[$F{vitamin_a_ug}]]></variableExpression>
+	</variable>
+	<variable name="T_THIAMINE_MG" class="java.math.BigDecimal" resetType="Group" resetGroup="FOOD_TYPE" calculation="Sum">
+		<variableExpression><![CDATA[$F{thiamine_mg}]]></variableExpression>
+	</variable>
+	<variable name="T_REBOFLAVIN_MG" class="java.math.BigDecimal" resetType="Group" resetGroup="FOOD_TYPE" calculation="Sum">
+		<variableExpression><![CDATA[$F{reboflavin_mg}]]></variableExpression>
+	</variable>
+	<variable name="T_NIACIN_MG" class="java.math.BigDecimal" resetType="Group" resetGroup="FOOD_TYPE" calculation="Sum">
+		<variableExpression><![CDATA[$F{niacin_mg}]]></variableExpression>
+	</variable>
+	<variable name="T_VITAMIN_C_MG" class="java.math.BigDecimal" resetType="Group" resetGroup="FOOD_TYPE" calculation="Sum">
+		<variableExpression><![CDATA[$F{vitamin_c_mg}]]></variableExpression>
+	</variable>
+	<variable name="T_ASCT_G" class="java.math.BigDecimal" resetType="Group" resetGroup="FOOD_TYPE" calculation="Sum">
+		<variableExpression><![CDATA[$F{asct_g}]]></variableExpression>
+	</variable>
+	<variable name="T_SODIUM_MG" class="java.math.BigDecimal" resetType="Group" resetGroup="FOOD_TYPE" calculation="Sum">
+		<variableExpression><![CDATA[$F{sodium_mg}]]></variableExpression>
+	</variable>
+	<variable name="T_CHOLESTEROL_MG" class="java.math.BigDecimal" resetType="Group" resetGroup="FOOD_TYPE" calculation="Sum">
+		<variableExpression><![CDATA[$F{cholesterol_mg}]]></variableExpression>
+	</variable>
+	<variable name="T_POTASSIUM_MG" class="java.math.BigDecimal" resetType="Group" resetGroup="FOOD_TYPE" calculation="Sum">
+		<variableExpression><![CDATA[$F{potassium_mg}]]></variableExpression>
+	</variable>
+	<variable name="T_OMEGA3" class="java.math.BigDecimal" resetType="Group" resetGroup="FOOD_TYPE" calculation="Sum">
+		<variableExpression><![CDATA[$F{omega3}]]></variableExpression>
+	</variable>
+	<variable name="T_OMEGA6" class="java.math.BigDecimal" resetType="Group" resetGroup="FOOD_TYPE" calculation="Sum">
+		<variableExpression><![CDATA[$F{omega6}]]></variableExpression>
+	</variable>
+	<variable name="T_SATURATED_FAT_G" class="java.math.BigDecimal" resetType="Group" resetGroup="FOOD_TYPE" calculation="Sum">
+		<variableExpression><![CDATA[$F{saturated_fat_g}]]></variableExpression>
+	</variable>
+	<variable name="T_TRANS_FAT_G" class="java.math.BigDecimal" resetType="Group" resetGroup="FOOD_TYPE" calculation="Sum">
+		<variableExpression><![CDATA[$F{trans_fat_g}]]></variableExpression>
+	</variable>
+	<variable name="T_MAGNETIUM_MG" class="java.math.BigDecimal" resetType="Group" resetGroup="FOOD_TYPE" calculation="Sum">
+		<variableExpression><![CDATA[$F{magnetium_mg}]]></variableExpression>
+	</variable>
+	<variable name="T_IODINE_MG" class="java.math.BigDecimal" resetType="Group" resetGroup="FOOD_TYPE" calculation="Sum">
+		<variableExpression><![CDATA[$F{iodine_mg}]]></variableExpression>
+	</variable>
+	<variable name="T_SELENIUM_UG" class="java.math.BigDecimal" resetType="Group" resetGroup="FOOD_TYPE" calculation="Sum">
+		<variableExpression><![CDATA[$F{selenium_ug}]]></variableExpression>
+	</variable>
+	<variable name="T_FOLIC_ACID_UG" class="java.math.BigDecimal" resetType="Group" resetGroup="FOOD_TYPE" calculation="Sum">
+		<variableExpression><![CDATA[$F{folic_acid_ug}]]></variableExpression>
+	</variable>
+	<variable name="T_VITAMIN_D_UG" class="java.math.BigDecimal" resetType="Group" resetGroup="FOOD_TYPE" calculation="Sum">
+		<variableExpression><![CDATA[$F{vitamin_d_ug}]]></variableExpression>
+	</variable>
+	<variable name="T_VITAMIN_B1_MG" class="java.math.BigDecimal" resetType="Group" resetGroup="FOOD_TYPE" calculation="Sum">
+		<variableExpression><![CDATA[$F{vitamin_b1_mg}]]></variableExpression>
+	</variable>
+	<variable name="T_VITAMIN_B2_MG" class="java.math.BigDecimal" resetType="Group" resetGroup="FOOD_TYPE" calculation="Sum">
+		<variableExpression><![CDATA[$F{vitamin_b2_mg}]]></variableExpression>
+	</variable>
+	<variable name="T_B12_VITAMIN_MG" class="java.math.BigDecimal" resetType="Group" resetGroup="FOOD_TYPE" calculation="Sum">
+		<variableExpression><![CDATA[$F{b12_vitamin_mg}]]></variableExpression>
+	</variable>
+	<variable name="T_COPPER_UG" class="java.math.BigDecimal" resetType="Group" resetGroup="FOOD_TYPE" calculation="Sum">
+		<variableExpression><![CDATA[$F{copper_ug}]]></variableExpression>
+	</variable>
+	<variable name="T_MERCURY_UG" class="java.math.BigDecimal" resetType="Group" resetGroup="FOOD_TYPE" calculation="Sum">
+		<variableExpression><![CDATA[$F{mercury_ug}]]></variableExpression>
+	</variable>
+	<variable name="T_LEAD_UG" class="java.math.BigDecimal" resetType="Group" resetGroup="FOOD_TYPE" calculation="Sum">
+		<variableExpression><![CDATA[$F{lead_ug}]]></variableExpression>
+	</variable>
+	<variable name="T_ALUMINUM_MG" class="java.math.BigDecimal" resetType="Group" resetGroup="FOOD_TYPE" calculation="Sum">
+		<variableExpression><![CDATA[$F{aluminum_mg}]]></variableExpression>
+	</variable>
+	<variable name="T_CADMIUM_UG" class="java.math.BigDecimal" resetType="Group" resetGroup="FOOD_TYPE" calculation="Sum">
+		<variableExpression><![CDATA[$F{cadmium_ug}]]></variableExpression>
+	</variable>
+	<variable name="T_ARSENIC_UG" class="java.math.BigDecimal" resetType="Group" resetGroup="FOOD_TYPE" calculation="Sum">
+		<variableExpression><![CDATA[$F{arsenic_ug}]]></variableExpression>
+	</variable>
+	<variable name="T_DHA_MG" class="java.math.BigDecimal" resetType="Group" resetGroup="FOOD_TYPE" calculation="Sum">
+		<variableExpression><![CDATA[$F{dha_mg}]]></variableExpression>
+	</variable>
+	<variable name="T_ARA_MG" class="java.math.BigDecimal" resetType="Group" resetGroup="FOOD_TYPE" calculation="Sum">
+		<variableExpression><![CDATA[$F{ara_mg}]]></variableExpression>
+	</variable>
+	<group name="DATE">
+		<groupExpression><![CDATA[$F{date}]]></groupExpression>
+		<groupHeader>
+			<band height="15">
+				<textField pattern="dd/MM/yyyy">
+					<reportElement x="0" y="0" width="100" height="15" uuid="8f4e9607-5893-40a0-9b44-d59b0ac361fe"/>
+					<textElement>
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{date}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="PROFESSIONAL">
+		<groupExpression><![CDATA[$F{professional_id}]]></groupExpression>
+		<groupHeader>
+			<band height="46">
+				<textField>
+					<reportElement x="45" y="0" width="85" height="15" uuid="724062c0-7a1c-42fd-934f-c7839d8e0aba"/>
+					<textElement verticalAlignment="Middle">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{professional_fullname}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="0" width="45" height="15" uuid="659b36d7-2f28-47f7-8677-9bcea1c61b62"/>
+					<textElement verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<text><![CDATA[Profesional:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="15" width="45" height="15" uuid="15f93997-819b-4480-be6d-f3986a93ce41"/>
+					<textElement verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<text><![CDATA[Profesion:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="45" y="15" width="85" height="15" uuid="ade3a2a9-e1c6-4745-b69a-db6dc0013347"/>
+					<textElement verticalAlignment="Middle">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{professional_profession}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="282" y="24" width="40" height="22" uuid="846d1a15-ea0b-4639-8ece-743b55cffb1f"/>
+					<box leftPadding="0" bottomPadding="0"/>
+					<textElement textAlignment="Center" verticalAlignment="Top" rotation="None">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Energia (kcal)
+]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="322" y="24" width="40" height="22" uuid="54b7d442-a02f-410b-bc08-1e32892c0bb5"/>
+					<box leftPadding="0" bottomPadding="0"/>
+					<textElement textAlignment="Center" verticalAlignment="Top" rotation="None">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Agua (g)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="362" y="24" width="40" height="22" uuid="88f47d06-4889-435a-b1a0-1250bb2f997c"/>
+					<box leftPadding="0" bottomPadding="0"/>
+					<textElement textAlignment="Center" verticalAlignment="Top" rotation="None">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Proteninas (g)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="402" y="24" width="40" height="22" uuid="c340c1c9-b746-40da-93bf-b62649281840"/>
+					<box leftPadding="0" bottomPadding="0"/>
+					<textElement textAlignment="Center" verticalAlignment="Top" rotation="None">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Grasa Total (g)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="442" y="24" width="40" height="22" uuid="456ac781-4e1b-4832-9de9-03433b1b918d"/>
+					<box leftPadding="0" bottomPadding="0"/>
+					<textElement textAlignment="Center" verticalAlignment="Top" rotation="None">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Carbo Totales (g)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="522" y="24" width="40" height="22" uuid="e5e5f5a7-6f07-4c9e-96cb-f259bcc37c3d"/>
+					<box leftPadding="0" bottomPadding="0"/>
+					<textElement textAlignment="Center" verticalAlignment="Top" rotation="None">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Fibra Cruda (g)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="562" y="24" width="40" height="22" uuid="d2569d32-7e82-4289-a670-ee711c8728da"/>
+					<box leftPadding="0" bottomPadding="0"/>
+					<textElement textAlignment="Center" verticalAlignment="Top" rotation="None">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Fibra Dietetica (g)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="602" y="24" width="40" height="22" uuid="5e42c431-5f54-4eef-8673-39e8454b6304"/>
+					<box leftPadding="0" bottomPadding="0"/>
+					<textElement textAlignment="Center" verticalAlignment="Top" rotation="None">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Colesterol (mg)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="642" y="24" width="40" height="22" uuid="66254946-eba8-441a-8684-fed915d4daee"/>
+					<box leftPadding="0" bottomPadding="0"/>
+					<textElement textAlignment="Center" verticalAlignment="Top" rotation="None">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Omega3]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="682" y="24" width="40" height="22" uuid="085f2229-07fe-4f82-857c-883341dd24f8"/>
+					<box leftPadding="0" bottomPadding="0"/>
+					<textElement textAlignment="Center" verticalAlignment="Top" rotation="None">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Omega6]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="722" y="24" width="40" height="22" uuid="0285d0b8-1acd-462a-bedd-822c70499d56"/>
+					<box leftPadding="0" bottomPadding="0"/>
+					<textElement textAlignment="Center" verticalAlignment="Top" rotation="None">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Grasa Saturada (g)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="762" y="24" width="40" height="22" uuid="d5080bdc-dfb8-4390-810a-5108192de544"/>
+					<box leftPadding="0" bottomPadding="0"/>
+					<textElement textAlignment="Center" verticalAlignment="Top" rotation="None">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Grasa Trans (g)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="242" y="24" width="40" height="22" uuid="a8ef48e8-bd49-4701-b1b3-7cd5ce108f79"/>
+					<box leftPadding="0" bottomPadding="0"/>
+					<textElement textAlignment="Center" verticalAlignment="Top" rotation="None">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Gramos]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="30" width="45" height="15" uuid="325bd2b4-0efe-4161-9cc1-8e7a5e4e8fc6"/>
+					<textElement verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<text><![CDATA[Profesion:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="45" y="30" width="85" height="16" uuid="9117c028-52bd-4668-afed-83bb0d12f2e3"/>
+					<textElement>
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{professional_code}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="482" y="24" width="40" height="22" uuid="71f5c3db-0c74-4a52-ba59-415d7bb38507"/>
+					<box leftPadding="0" bottomPadding="0"/>
+					<textElement textAlignment="Center" verticalAlignment="Top" rotation="None">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Carbo Disp (g)]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="21">
+				<break>
+					<reportElement x="0" y="13" width="100" height="1" uuid="8bd3577f-985f-483f-97e6-86a28188a9e3"/>
+				</break>
+			</band>
+		</groupFooter>
+	</group>
+	<group name="FOOD_TYPE">
+		<groupExpression><![CDATA[$F{food_type_id}]]></groupExpression>
+		<groupHeader>
+			<band height="16">
+				<textField>
+					<reportElement x="15" y="0" width="227" height="15" uuid="f7480c10-95b2-4ba4-a9be-f43b2b47f5f6"/>
+					<box>
+						<bottomPen lineWidth="1.0"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{food_type_descrip}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="FOOD_TYPE" pattern="###0.0">
+					<reportElement x="242" y="0" width="40" height="15" uuid="40afcfd0-0bf5-47f5-89ca-78f0767c3cba"/>
+					<box>
+						<bottomPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{T_AMOUNT}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="FOOD_TYPE" pattern="###0.0">
+					<reportElement x="282" y="0" width="40" height="15" uuid="83921b6a-bd72-49bb-8aae-dfdc77878425"/>
+					<box>
+						<bottomPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{T_ENERGY_KCAL}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="FOOD_TYPE" pattern="###0.0">
+					<reportElement x="322" y="0" width="40" height="15" uuid="3094c430-c2e7-4453-b327-9e9c616e200a"/>
+					<box>
+						<bottomPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{T_WATER_G}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="FOOD_TYPE" pattern="###0.0">
+					<reportElement x="362" y="0" width="40" height="15" uuid="ad157640-8ae4-43b7-a87f-d24ac34a0b95"/>
+					<box>
+						<bottomPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{T_PROTEININS_G}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="FOOD_TYPE" pattern="###0.0">
+					<reportElement x="402" y="0" width="40" height="15" uuid="aba6bb82-87c6-402d-b4ea-d1e4f1640813"/>
+					<box>
+						<bottomPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{T_TOTAL_FAT_G}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="FOOD_TYPE" pattern="###0.0">
+					<reportElement x="442" y="0" width="40" height="15" uuid="bb3d073e-0953-4142-b0b7-c92cb5c97224"/>
+					<box>
+						<bottomPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{T_TOTAL_CARBOHYDRATES_G}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="FOOD_TYPE" pattern="###0.0">
+					<reportElement x="522" y="0" width="40" height="15" uuid="37ac0856-d859-4dfa-ae70-865036e05949"/>
+					<box>
+						<bottomPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{T_RAW_FIBER_G}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="FOOD_TYPE" pattern="###0.0">
+					<reportElement x="562" y="0" width="40" height="15" uuid="064bfffa-9431-4638-ad7e-794641549e39"/>
+					<box>
+						<bottomPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{T_DIETARY_FIBER_G}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="FOOD_TYPE" pattern="###0.0">
+					<reportElement x="602" y="0" width="40" height="15" uuid="c0eac574-c611-428b-89da-a628e8f8855c"/>
+					<box>
+						<bottomPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{T_CHOLESTEROL_MG}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="FOOD_TYPE" pattern="###0.0">
+					<reportElement x="642" y="0" width="40" height="15" uuid="bcb74609-82c3-43fe-a135-e6ac39c81637"/>
+					<box>
+						<bottomPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{T_OMEGA3}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="FOOD_TYPE" pattern="###0.0">
+					<reportElement x="682" y="0" width="40" height="15" uuid="36d5e5ea-01ae-4b16-8474-8153a9dc6927"/>
+					<box>
+						<bottomPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{T_OMEGA6}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="FOOD_TYPE" pattern="###0.0">
+					<reportElement x="722" y="0" width="40" height="15" uuid="6084c81b-f6a2-4fd0-9cab-6e79501a5247"/>
+					<box>
+						<bottomPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{T_SATURATED_FAT_G}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="FOOD_TYPE" pattern="###0.0">
+					<reportElement x="762" y="0" width="40" height="15" uuid="e8dda02f-7f28-42e1-b1da-7bd45f0a0b5f"/>
+					<box>
+						<bottomPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{T_TRANS_FAT_G}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="FOOD_TYPE">
+					<reportElement x="482" y="0" width="40" height="15" uuid="fbc4b7a2-e762-4aa9-961f-e74a8c78874a"/>
+					<box>
+						<bottomPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{T_DISP_CARBOHYDRATES_G}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="PREPARATION">
+		<groupExpression><![CDATA[$F{preparation_id}]]></groupExpression>
+		<groupHeader>
+			<band height="15">
+				<textField>
+					<reportElement x="30" y="0" width="212" height="15" uuid="242742a4-1b78-4d86-86a7-1682fd28c7a7"/>
+					<textElement verticalAlignment="Middle">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{preparation_descrip}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="PREPARATION" pattern="###0.0">
+					<reportElement x="362" y="0" width="40" height="15" uuid="06627c5d-237d-4c26-aa0e-051ce550a2ac"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{P_PROTEININS_G}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="PREPARATION" pattern="###0.0">
+					<reportElement x="402" y="0" width="40" height="15" uuid="1005a17e-b299-4382-9977-65b849014980"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{P_TOTAL_FAT_G}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="PREPARATION" pattern="###0.0">
+					<reportElement x="442" y="0" width="40" height="15" uuid="9beb4ee8-8b6c-46c8-87c3-552b3d2928d7"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{P_TOTAL_CARBOHYDRATES_G}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="PREPARATION" pattern="###0.0">
+					<reportElement x="522" y="0" width="40" height="15" uuid="a66ef9b4-568b-4bc9-a61d-d3911044711a"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{P_RAW_FIBER_G}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="PREPARATION" pattern="###0.0">
+					<reportElement x="562" y="0" width="40" height="15" uuid="f968d203-d810-4a81-8a3c-32223cd76fe9"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{P_DIETARY_FIBER_G}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="PREPARATION" pattern="###0.0">
+					<reportElement x="602" y="0" width="40" height="15" uuid="7f58b4ea-a26f-4eeb-a42a-ef2066f8e36c"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{P_CHOLESTEROL_MG}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="PREPARATION" pattern="###0.0">
+					<reportElement x="642" y="0" width="40" height="15" uuid="8a08470e-2865-4617-8ec9-0d010c549594"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{P_OMEGA3}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="PREPARATION" pattern="###0.0">
+					<reportElement x="682" y="0" width="40" height="15" uuid="a287e5ad-74b8-4363-8f14-d1b447339c2d"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{P_OMEGA6}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="PREPARATION" pattern="###0.0">
+					<reportElement x="722" y="0" width="40" height="15" uuid="d51007b1-cfcf-4044-87d8-fa07e69ba6eb"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{P_SATURATED_FAT_G}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="PREPARATION" pattern="###0.0">
+					<reportElement x="762" y="0" width="40" height="15" uuid="b462096d-61e4-4747-a8af-167f34414cda"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{P_TRANS_FAT_G}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="PREPARATION" pattern="###0.0">
+					<reportElement x="282" y="0" width="40" height="15" uuid="38a64d98-14ca-4d17-916c-7704bc2e8eb3"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{P_ENERGY_KCAL}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="PREPARATION" pattern="###0.0">
+					<reportElement x="322" y="0" width="40" height="15" uuid="05adafe9-6137-46cb-b812-9636826c2e2a"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{P_WATER_G}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="PREPARATION" pattern="###0.0">
+					<reportElement x="242" y="0" width="40" height="15" uuid="b5b0a172-d15e-472a-a435-a4d852a7d36b"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{P_AMOUNT}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="PREPARATION">
+					<reportElement x="482" y="0" width="40" height="15" uuid="f83b52e1-1637-4fd1-841c-f6e6a61053d8"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{P_DISP_CARBOHYDRATES_G}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="38" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="9" width="802" height="20" uuid="bf62f0c6-1f77-4b83-983e-b21eb3abfd19"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["CONTENIDO NUTRICIONAL MACRONUTRIENTES"
++" DEL "+(new SimpleDateFormat("dd/MM/yyyy").format($P{DATE_FROM}))
++" AL "+(new SimpleDateFormat("dd/MM/yyyy").format($P{DATE_TO}))]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<textField>
+				<reportElement x="45" y="0" width="197" height="15" uuid="51a949d1-4cb8-4edf-a06f-47e0b52baa54"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{food_descrip}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.0">
+				<reportElement x="282" y="0" width="40" height="15" uuid="04ae4c9b-e98c-47e4-ac23-6ea35708df7b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{energy_kcal}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.0">
+				<reportElement x="322" y="0" width="40" height="15" uuid="e5c66355-0988-4f15-9e68-f011eba22e78"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{water_g}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.0">
+				<reportElement x="362" y="0" width="40" height="15" uuid="df2ab2d3-c7f0-4653-94fc-632d3aa752e5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{proteinins_g}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.0">
+				<reportElement x="402" y="0" width="40" height="15" uuid="7d138348-13d0-490c-9de7-c8d2524245eb"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{total_fat_g}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.0">
+				<reportElement x="442" y="0" width="40" height="15" uuid="76ad3e34-04e0-448f-b0dd-9faaab9bbcb9"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{total_carbohydrates_g}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.0">
+				<reportElement x="522" y="0" width="40" height="15" uuid="85a6ed65-bc9a-451c-8b13-8794eeb3ae5b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{raw_fiber_g}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.0">
+				<reportElement x="562" y="0" width="40" height="15" uuid="138450af-ade8-4c16-9a34-6f3ca00bc984"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dietary_fiber_g}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.0">
+				<reportElement x="602" y="0" width="40" height="15" uuid="49782622-d466-42eb-8009-1c037489bf55"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cholesterol_mg}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.0">
+				<reportElement x="642" y="0" width="40" height="15" uuid="d108f29e-e3ad-4669-bc56-8f728ae20ee9"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{omega3}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.0">
+				<reportElement x="682" y="0" width="40" height="15" uuid="94b9e380-d0dc-40aa-8d6c-7e75fce19659"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{omega6}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.0">
+				<reportElement x="722" y="0" width="40" height="15" uuid="3de306c0-3dc8-4911-bb82-dadb3c47acb6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{saturated_fat_g}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.0">
+				<reportElement x="762" y="0" width="40" height="15" uuid="84d7d4c8-c4fc-499f-8a90-3cfb7b6015b3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{trans_fat_g}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.0">
+				<reportElement x="242" y="0" width="40" height="15" uuid="40cade60-8c2e-4049-be80-73e3a827e2da"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{amount_min}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="482" y="0" width="40" height="15" uuid="b73247e2-cb4b-4dc8-872f-939a616f1d24"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{disp_carbohydrates_g}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+</jasperReport>

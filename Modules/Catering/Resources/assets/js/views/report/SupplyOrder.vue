@@ -11,11 +11,12 @@
                 <!-- warehouse_id -->
                 <v-col cols="12" sm="4">
                     <v-select dense outlined
-                        v-model="filter.warehouse_id"
+                        v-model="filter.warehouse"
                         :items="meta.warehouses"
                         label="Almacen*"
                         item-value="id"
                         item-text="name"
+                        return-object
                         hide-details="auto"
                         :error="filter.errors.has('warehouse_id')"
                         :error-messages="filter.errors.get('warehouse_id')"
@@ -24,11 +25,12 @@
                 <!-- regime_id -->
                 <v-col cols="12" sm="4">
                     <v-select dense outlined
-                        v-model="filter.regime_id"
+                        v-model="filter.regime"
                         :items="meta.regimes"
                         label="Regimen*"
                         item-value="id"
                         item-text="descrip"
+                        return-object
                         hide-details="auto"
                         :error="filter.errors.has('regime_id')"
                         :error-messages="filter.errors.get('regime_id')"
@@ -37,11 +39,12 @@
                 <!-- food_type_id -->
                 <v-col cols="12" sm="4">
                     <v-select dense outlined
-                        v-model="filter.food_type_id"
+                        v-model="filter.food_type"
                         :items="meta.food_types"
                         label="Tipo Comida"
                         item-value="id"
                         item-text="descrip"
+                        return-object
                         hide-details="auto"
                         :error="filter.errors.has('food_type_id')"
                         :error-messages="filter.errors.get('food_type_id')"
@@ -76,11 +79,12 @@
                         v-model="filter.report"
                         :items="meta.reports"
                         label="Reporte*"
-                        item-value="id"
-                        item-text="name"
+                        item-value="reportname"
+                        item-text="label"
+                        return-object
                         hide-details="auto"
-                        :error="filter.errors.has('report')"
-                        :error-messages="filter.errors.get('report')"
+                        :error="filter.errors.has('reportname')"
+                        :error-messages="filter.errors.get('reportname')"
                     ></v-select>
                 </v-col>
             </v-row>
@@ -88,7 +92,7 @@
 
         <v-card-actions>
             <v-spacer></v-spacer>
-            <v-btn text color="success" @click="goReport()">
+            <v-btn text color="success" @click="generateReport()">
                 Generar
             </v-btn>
         </v-card-actions>
@@ -104,9 +108,9 @@ export default {
             resource: 'catering/report/supply-order',
 
             filter: new Form({
-                warehouse_id: null,
-                regime_id: null,
-                food_type_id : null,
+                warehouse: null,
+                regime: null,
+                food_type: null,
                 date_from: this.$moment().format('YYYY-MM-DD'),
                 date_to: this.$moment().format('YYYY-MM-DD'),
                 report: null,
@@ -131,25 +135,23 @@ export default {
             }
         },
 
-        async goReport()
+        async generateReport()
         {
-            try {
+             try {
                 const params = { 
-                    warehouse_id: this.filter.warehouse_id,
-                    regime_id: this.filter.regime_id,
-                    food_type_id : this.filter.food_type_id,
+                    warehouse_id: this.filter.warehouse? this.filter.warehouse.id: null,
+                    regime_id: this.filter.regime? this.filter.regime.id: null,
+                    food_type_id : this.filter.food_type? this.filter.food_type.id: null,
                     date_from: this.filter.date_from,
                     date_to: this.filter.date_to,
-                    report: this.filter.report,
+                    reportname: this.filter.report? this.filter.report.reportname: null,
                 }
+
                 const {data} = await this.filter.get(`/${this.resource}`, {params})
-
-                let routeData = this.$router.resolve({path: `/api/${this.resource}/generate`, query: data });
-
+                let routeData = this.$router.resolve({path: `/api/catering/report/generate/${data.reportname}`, query: data.params });
                 window.open(routeData.href, '_blank');
-
             } catch (error) {
-                this.$toast(params.service, 'danger')
+                this.$toast(error.message, 'danger')
             }
         }
 

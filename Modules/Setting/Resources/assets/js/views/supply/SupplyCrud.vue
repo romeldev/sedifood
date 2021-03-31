@@ -134,19 +134,19 @@
                     label="Buscar"
                     single-line
                     hide-details
+                    @search="getItems"
                 ></v-text-field>
 
             </v-card-title>
 
-            <v-data-table
+            <v-data-table dense
                 :headers="headers"
-                :items="items"
+                :items="dataItems.data"
                 :loading="loading"
-                :search="filter.search"
+                disable-sort
+                disable-pagination
+                hide-default-footer
             >
-                <template v-slot:[`item.roles`]="{ item }">
-                    {{ item.roles.map( r => r.name).toString() }}
-                </template>
                 <template v-slot:[`item.action`]="{ item }">
                     <v-icon
                         small
@@ -157,6 +157,19 @@
                     </v-icon>
                 </template>
             </v-data-table>
+
+            <v-card-actions>
+                <v-row>
+                    <v-col cols="12" class="text-center">
+                        <v-pagination
+                            v-model="dataItems.meta.current_page"
+                            :length="dataItems.meta.last_page"
+                            :total-visible="7"
+                            @input="getItems"
+                        ></v-pagination>
+                    </v-col>
+                </v-row>
+            </v-card-actions>
         </v-card>
     </div>
 </template>
@@ -201,7 +214,7 @@ export default {
                 { text: 'Valor', value: 'value', width:100 },
             ],
 
-            items: [],
+            dataItems: { meta: {}, data: [] },
 
             meta: { supply_types: [], unit_types: [], nutrient_columns: [] },
         }
@@ -256,11 +269,16 @@ export default {
             }
         },
 
-        async getItems() {
+        async getItems( page=1 ) {
             try {
+                const params = {
+                    page: page,
+                    search: this.filter.search
+                }
+
                 this.loading = true
-                const { data }  = await this.form.get(`/${this.resource}`)
-                this.items = data
+                const { data }  = await this.form.get(`/${this.resource}`, {params})
+                this.dataItems = data
             } catch (error) {
                 this.$toast(error.message, 'danger')
             } finally {
@@ -272,7 +290,7 @@ export default {
             try {
                 this.form.clear()
                 this.saving = true
-                const itemIndex = this.items.findIndex(x => x.id===this.form.id)
+                const itemIndex = this.dataItems.data.findIndex(x => x.id===this.form.id)
 
                 if( action==='delete' && !confirm("¿Realmente desea eliminar el registro?") ){
                     this.dialog = false
@@ -282,16 +300,16 @@ export default {
                 const { data } = await this.form.req(`/${this.resource}`, action)
 
                 if (action === 'create') {
-                    this.items.unshift(data)
-                    this.$toast('registro creado!', 'success')
+                    this.filter.search=null
+                    this.getItems()
                 }
                 if (action === 'edit') {
-                    this.items.splice(itemIndex, 1, data)
+                    this.dataItems.data.splice(itemIndex, 1, data)
                     this.$toast('registro actualizado!', 'success')
                 }
                 if (action === 'delete') {
-                    this.items.splice(itemIndex, 1)
-                    this.$toast('registro eliminado!', 'success')
+                    this.filter.search=null
+                    this.getItems()
                 }
                 this.dialog = false
             } catch (error) {

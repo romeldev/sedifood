@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" whenNoDataType="NoDataSection" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="aff9bba6-5b2d-45c4-9463-2ee3d44fb925">
+	<property name="ireport.zoom" value="1.4641000000000006"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="DATE_FROM" class="java.util.Date">
+		<defaultValueExpression><![CDATA[new java.util.Date(System.currentTimeMillis())]]></defaultValueExpression>
+	</parameter>
+	<parameter name="DATE_TO" class="java.util.Date">
+		<defaultValueExpression><![CDATA[new java.util.Date(System.currentTimeMillis())]]></defaultValueExpression>
+	</parameter>
+	<parameter name="COMPANY_ID" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[3]]></defaultValueExpression>
+	</parameter>
+	<parameter name="REGIME_ID" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[1013]]></defaultValueExpression>
+	</parameter>
+	<parameter name="FOOD_TYPE_ID" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[10]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select * from view_progs
+where company_id=$P{COMPANY_ID}
+and date >= $P{DATE_FROM}
+and date <= $P{DATE_TO}
+and regime_id = $P{REGIME_ID}
+and food_type_id = $P{FOOD_TYPE_ID}]]>
+	</queryString>
+	<field name="company_id" class="java.math.BigInteger">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="date" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="regime_id" class="java.math.BigInteger">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="professional_id" class="java.math.BigInteger">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="professional_fullname" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="professional_profession" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="professional_code" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="regimen_id" class="java.math.BigInteger">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="regime_descrip" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="food_type_id" class="java.math.BigInteger">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="food_type_descrip" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="preparation_id" class="java.math.BigInteger">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="preparation_descrip" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="unit_id" class="java.math.BigInteger">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="food_id" class="java.math.BigInteger">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="food_descrip" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="amount" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="price" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="total_price" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="currency_symbol" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<variable name="TOTAL_PRICE_PREPARATION" class="java.math.BigDecimal" resetType="Group" resetGroup="PREPARACION" calculation="Sum">
+		<variableExpression><![CDATA[$F{total_price}]]></variableExpression>
+	</variable>
+	<group name="DATE">
+		<groupExpression><![CDATA[$F{date}]]></groupExpression>
+		<groupHeader>
+			<band height="20">
+				<textField pattern="dd/MM/yyyy">
+					<reportElement x="0" y="0" width="374" height="20" uuid="4bcb2d2a-e359-46cb-9ab3-e5afbd097219"/>
+					<box leftPadding="10"/>
+					<textElement textAlignment="Justified" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{date}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="374" y="0" width="100" height="20" uuid="3655a027-0e7f-4776-8dc1-2c2096fd1cb2"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Gramos]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="487" y="0" width="68" height="20" uuid="b38bb8f4-6dfb-4121-8bb8-773c4bc3ba93"/>
+					<box rightPadding="10"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Costo]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="PROFESSIONAL">
+		<groupExpression><![CDATA[$F{professional_id}]]></groupExpression>
+		<groupHeader>
+			<band height="40">
+				<staticText>
+					<reportElement x="0" y="0" width="60" height="20" uuid="dc21737b-a2fc-4b06-930f-104d7337fa70"/>
+					<textElement verticalAlignment="Middle">
+						<font isBold="false"/>
+					</textElement>
+					<text><![CDATA[Profesional:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="20" width="60" height="20" uuid="45f0e84c-c429-4b5a-a131-45cc270c9d95"/>
+					<textElement verticalAlignment="Middle">
+						<font isBold="false"/>
+					</textElement>
+					<text><![CDATA[Profession:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="60" y="0" width="299" height="20" uuid="4035aa0b-5c48-41b5-aae1-bc875d1f846b"/>
+					<textElement verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{professional_fullname}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="60" y="20" width="139" height="20" uuid="d807d0f4-cac7-432f-b489-4256710136c3"/>
+					<textElement verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{professional_profession}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="199" y="20" width="60" height="20" uuid="db07cd5a-8ca6-43d1-9e33-c0969ac4cda9"/>
+					<textElement verticalAlignment="Middle">
+						<font isBold="false"/>
+					</textElement>
+					<text><![CDATA[Colegiatura]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="259" y="20" width="100" height="20" uuid="96e9c568-bab8-4f4b-8cc5-ebe32a52ab6e"/>
+					<textElement verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{professional_code}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="FOOD_TYPE">
+		<groupExpression><![CDATA[$F{food_type_id}]]></groupExpression>
+		<groupHeader>
+			<band height="20">
+				<textField>
+					<reportElement x="20" y="0" width="354" height="20" uuid="a782c3c6-0d56-4c0c-80c0-04aaca2216cd"/>
+					<textElement verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{food_descrip}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="PREPARACION">
+		<groupExpression><![CDATA[$F{preparation_id}]]></groupExpression>
+		<groupHeader>
+			<band height="20">
+				<textField>
+					<reportElement x="40" y="0" width="334" height="20" uuid="81850643-9af3-4a56-9a55-a825caf2748c"/>
+					<textElement verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{preparation_descrip}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="PREPARACION">
+					<reportElement x="502" y="0" width="53" height="20" uuid="33aca8d7-189d-4003-995c-e82fce851797"/>
+					<textElement textAlignment="Right">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{TOTAL_PRICE_PREPARATION}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="14" width="555" height="20" uuid="ee1d3086-ec35-46f8-bf4a-147c3e603c90"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["COSTO DEL MENU"
++" DEL "+(new SimpleDateFormat("dd/MM/yyyy").format($P{DATE_FROM}))
++" AL "+(new SimpleDateFormat("dd/MM/yyyy").format($P{DATE_TO}))]]></textFieldExpression>
+			</textField>
+			<rectangle radius="10">
+				<reportElement mode="Transparent" x="0" y="14" width="555" height="20" uuid="5a7dd435-da2c-40b6-b555-1ccd70323d3a"/>
+			</rectangle>
+		</band>
+	</title>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="60" y="0" width="314" height="20" uuid="354924aa-ed02-4b97-8c4e-7d45f7066b4c"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{food_descrip}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="502" y="0" width="53" height="20" uuid="e9cd65c1-9baa-4bdd-ad6d-120fe576addb"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{total_price}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="374" y="0" width="113" height="20" uuid="0162dd3b-a9d0-4836-ab31-066b2e9a3541"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{amount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="487" y="0" width="15" height="20" uuid="ac3e7fdc-1c65-4ddc-8577-df572da99666"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{currency_symbol}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+</jasperReport>

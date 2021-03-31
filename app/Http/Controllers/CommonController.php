@@ -32,6 +32,8 @@ class CommonController extends Controller
 
             case 'get-meta-report-supply-order': return $this->getMetaReportSupplyOrder();
 
+            case 'get-meta-report-nutritional-content': return $this->getMetaReportNutritionalContent();
+
             default: return null;
         }
     }
@@ -97,6 +99,16 @@ class CommonController extends Controller
         return response()->json($data);
     }
 
-    
+    public function getMetaReportNutritionalContent() {
 
+        $data['warehouses'] = Warehouse::where('estado', 1)->get();
+
+        $data['food_types'] = FoodType::all();
+
+        $data['regimes'] = Regime::all();
+
+        $data['reports'] = Report::nutritionalContentReports();
+
+        return response()->json($data);
+    }
 }

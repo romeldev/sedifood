@@ -12,7 +12,11 @@ class NutrientColumn extends Model
 
     public static function list()
     {
-        $data = NutrientColumn::whereNotIn('column', ['grams'])->get();
-        return $data;
+        $list = cache()->rememberForever('nutrient_columns', function() {
+            $data = NutrientColumn::whereNotIn('column', ['grams'])->get();
+            return $data;
+        });
+
+        return $list;
     }
 }

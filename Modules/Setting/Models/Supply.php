@@ -21,6 +21,13 @@ class Supply extends BaseModel0
 
     protected $appends = [ 'name', 'id' ];
 
+    public function scopeSearch( $query, $search )
+    {
+        if( trim($search) != ''){
+            return $query->where('nombre', 'like', "%$search%");
+        }
+    }
+
     public function getIdAttribute() 
     {
         return $this->attributes['id_insumo'];

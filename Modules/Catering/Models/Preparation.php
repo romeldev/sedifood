@@ -19,6 +19,13 @@ class Preparation extends BaseModel
 
     protected $appends = [ 'warehouse_id' ];
 
+    public function scopeSearch( $query, $search )
+    {
+        if( trim($search) != ''){
+            return $query->where('descrip', 'like', "%$search%");
+        }
+    }
+
     public function getWarehouseIdAttribute() 
     {
         return $this->attributes['company_id'];
