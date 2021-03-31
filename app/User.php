@@ -55,6 +55,16 @@ class User extends Authenticatable
         return $this->attributes['id_usuarios'] = $value;
     }
 
+    public function getWarehouseIdAttribute() 
+    {
+        return $this->attributes['id_almacen'];
+    }
+
+    public function setWarehouseIdAttribute($value) 
+    {
+        return $this->attributes['id_almacen'] = $value;
+    }
+
     public function getMenuAttribute()
     {
         return Menu::data();

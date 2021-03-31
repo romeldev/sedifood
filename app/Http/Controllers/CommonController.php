@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Modules\Catering\Models\Report;
 use Modules\Catering\Models\Preparation;
 use Modules\Setting\Models\FoodType;
 use Modules\Setting\Models\Regime;
@@ -26,6 +27,10 @@ class CommonController extends Controller
             case 'get-meta-crud-preparations': return $this->getMetaCrudPreparations();
 
             case 'get-meta-crud-programmings': return $this->getMetaCrudProgrammings();
+
+            case 'get-meta-stats-preparation-content': return $this->getMetaStatsPreparationContent();
+
+            case 'get-meta-report-supply-order': return $this->getMetaReportSupplyOrder();
 
             default: return null;
         }
@@ -67,4 +72,31 @@ class CommonController extends Controller
 
         return response()->json($data);
     }
+
+    public function getMetaStatsPreparationContent() {
+        $data['preparation_types'] = PreparationType::all();
+
+        $data['warehouses'] = Warehouse::where('estado', 1)->get()->map(function($item){
+            return [ 'id' => $item->id, 'name' => $item->name ];
+        });
+
+        $data['preparations'] = Preparation::all();
+
+        return response()->json($data);
+    }
+
+    public function getMetaReportSupplyOrder() {
+        $data['food_types'] = FoodType::all();
+
+        $data['warehouses'] = Warehouse::where('estado', 1)->get();
+
+        $data['regimes'] = Regime::all();
+
+        $data['reports'] = Report::supplyOrderReports();
+
+        return response()->json($data);
+    }
+
+    
+
 }

@@ -45,6 +45,13 @@ class Menu extends BaseModel
                     [ 'name' => 'Reporte', 'icon' => 'mdi-checkbox-blank-circle-outline', 'path' => '/report/supply-order' ],
                 ]
             ],
+
+            [ 'name' => 'Estadisticas y AN', 'icon' => 'mdi-poll', 'path' => '/stats',
+                'children' => [
+                    [ 'name' => 'Contenido Nutricional', 'icon' => 'mdi-checkbox-blank-circle-outline', 'path' => '/stats/nutritional-content' ],
+                    [ 'name' => 'Preparaciones', 'icon' => 'mdi-checkbox-blank-circle-outline', 'path' => '/stats/preparation-content' ],
+                ]
+            ],
         ];
     }
 }

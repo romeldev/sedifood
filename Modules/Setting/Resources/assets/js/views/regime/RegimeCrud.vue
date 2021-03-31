@@ -91,7 +91,7 @@
 export default {
     data () {
         return {
-            icon: 'mdi-cash-register',
+            icon: 'mdi-tag',
             resource: 'setting/regimes',
             title: 'Regimenes',
             titleForm: 'Regimen',

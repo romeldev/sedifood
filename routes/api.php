@@ -29,5 +29,7 @@ Route::namespace('\Modules\Catering\Http\Controllers')->group(function() {
     Route::prefix('catering')->group(function() {
         Route::apiResource('/preparations', 'PreparationController');
         Route::apiResource('/programmings', 'ProgrammingController');
+        Route::get('/report/supply-order', 'ReportController@reportSupplyOrder');
+        Route::get('/report/supply-order/generate', 'ReportController@generateReportSupplyOrder');
     });
 });

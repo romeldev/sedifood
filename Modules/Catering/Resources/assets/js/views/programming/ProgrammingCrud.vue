@@ -215,7 +215,7 @@
 export default {
     data () {
         return {
-            icon: 'mdi-cash-register',
+            icon: 'mdi-tag',
             resource: 'catering/programmings',
             title: 'Programaciones',
             titleForm: 'Programacion',
@@ -224,6 +224,9 @@ export default {
             saving: false,
             searchedPreparation: null,
             selectedWarehouse: null,
+
+            // warehouse: { id: this.$store.getters.warehouseId },
+
 
             filter: {
                 search: null,

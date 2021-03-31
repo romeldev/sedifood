@@ -24,6 +24,20 @@ const routes = {
             component: () => import('@module-catering/views/report/SupplyOrder'),
             meta: { permission: 'menu.report.supply-order'} 
         },
+
+        { 
+            path: '/stats/nutritional-content', 
+            name: 'stats.nutritional-content', 
+            component: () => import('@module-catering/views/stats/NutritionalContent'),
+            meta: { permission: 'menu.stats.nutritional-content'} 
+        },
+
+        { 
+            path: '/stats/preparation-content', 
+            name: 'stats.preparation-content', 
+            component: () => import('@module-catering/views/stats/PreparationContent'),
+            meta: { permission: 'menu.stats.preparation-content'} 
+        },
     ],
 }
 

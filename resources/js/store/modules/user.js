@@ -7,6 +7,7 @@ const state = {
     email: null,
     menu: [],
     avatar: null,
+    warehouse_id: null,
 }
 
 const mutations = {
@@ -16,6 +17,7 @@ const mutations = {
     SET_EMAIL: (state, value) => state.email = value,
     SET_MENU: (state, value) => state.menu = value,
     SET_AVATAR: (state, value) => state.avatar = value,
+    SET_WAREHOUSE_ID: (state, value) => state.warehouse_id = value,
 }
 
 const actions = {
@@ -48,6 +50,7 @@ const actions = {
         commit('SET_EMAIL', null)
         commit('SET_MENU', [])
         commit('SET_AVATAR', null)
+        commit('SET_WAREHOUSE_ID', null)
     },
 
     assignData({commit}, data ) {
@@ -58,6 +61,7 @@ const actions = {
         commit('SET_EMAIL', data.email)
         commit('SET_MENU', data.menu)
         commit('SET_AVATAR', data.avatar)
+        commit('SET_WAREHOUSE_ID', data.warehouse_id)
     },
 }
 

@@ -20,6 +20,7 @@ class AuthResource extends JsonResource
             'email' => $this->email,
             'menu' => $this->menu,
             'avatar' => $this->avatar,
+            'warehouse_id' => $this->warehouse_id,
         ];
     }
 }

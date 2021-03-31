@@ -142,7 +142,7 @@
                             item-text="name"
                             hide-details="auto"
                             return-object
-                            clearable
+                            readonly
                         ></v-select>
                     </v-col>
                     <v-col cols="12" sm="6">
@@ -187,7 +187,7 @@
 export default {
     data () {
         return {
-            icon: 'mdi-cash-register',
+            icon: 'mdi-tag',
             resource: 'catering/preparations',
             title: 'Preparaciones',
             titleForm: 'Preparacion',
@@ -197,7 +197,7 @@ export default {
             searchedSupply: null,
 
             filter: {
-                warehouse: null,
+                warehouse: { id: this.$store.getters.warehouseId },
                 preparation_type: null,
                 search: null,
             },

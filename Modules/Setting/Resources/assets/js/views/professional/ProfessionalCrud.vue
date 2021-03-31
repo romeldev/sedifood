@@ -114,7 +114,7 @@
 export default {
     data () {
         return {
-            icon: 'mdi-cash-register',
+            icon: 'mdi-tag',
             resource: 'setting/professionals',
             title: 'Profesionales',
             titleForm: 'Profesional',

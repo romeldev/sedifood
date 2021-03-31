@@ -92,7 +92,7 @@
 export default {
     data () {
         return {
-            icon: 'mdi-cash-register',
+            icon: 'mdi-tag',
             resource: 'setting/preparation-types',
             title: 'Tipos de Preparaciones',
             titleForm: 'Tipo de Preparacion',

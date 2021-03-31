@@ -102,7 +102,7 @@
 export default {
     data () {
         return {
-            icon: 'mdi-cash-register',
+            icon: 'mdi-tag',
             resource: 'setting/coins',
             title: 'Monedas',
             titleForm: 'Moneda',

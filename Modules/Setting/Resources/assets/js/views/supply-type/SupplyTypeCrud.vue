@@ -102,7 +102,7 @@
 export default {
     data () {
         return {
-            icon: 'mdi-cash-register',
+            icon: 'mdi-tag',
             resource: 'setting/supply-types',
             title: 'Tipos de Insumos',
             titleForm: 'Tipo de Insumo',
