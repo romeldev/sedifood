@@ -43,8 +43,8 @@ export default {
             drawer: null,
             loading: false,
             form: new Form({
-                username: 'helen',
-                password: '1',
+                username: null,
+                password: null,
             })
         }
     },
