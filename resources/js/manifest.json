@@ -5,7 +5,7 @@
     "background-color": "#DA74F9",
     "teme-color": "#749CF9",
     "display": "standalone",
-    "orientation": "landscape",
+    "orientation": "portrait",
     "start_url": "/?utm_source=web_app_manifest",
     "scope": "./",
     "icons": [
