@@ -1,0 +1,14 @@
+{
+    "name": "SediFood",
+    "short-name": "SediFood",
+    "description": "Sistema de Catering, gestiona insumos, recetas, programaciones y reportes",
+    "background-color": "#DA74F9",
+    "teme-color": "#749CF9",
+    "display": "standalone",
+    "orientation": "landscape",
+    "start_url": "/?utm_source=web_app_manifest",
+    "scope": "./",
+    "icons": [
+        { "src": "./img/logo-app.svg", "sizes": "any" }
+    ]
+}

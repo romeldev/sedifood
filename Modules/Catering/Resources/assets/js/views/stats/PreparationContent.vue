@@ -3,16 +3,7 @@
         <v-card-title>
             <v-icon left>{{icon}}</v-icon>
             {{ title }}
-            <v-btn x-small fab elevation="1"
-                class="ml-3"
-                color="primary" 
-                
-                @click="generateReport()"
-            ><v-icon>mdi-printer</v-icon></v-btn>
-
             <v-spacer></v-spacer>
-            
-
         </v-card-title>
 
         <v-card-text>

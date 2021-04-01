@@ -13,12 +13,12 @@
 
     {{-- <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet"> --}}
 
-    {{-- <link rel="icon" href="{{ asset('/img/logo-app.svg') }}" type="image/svg+xml">
-    <link rel="shortcut-icon" href="{{ asset('/img/logo-app.svg') }}" type="image/svg+xml"> --}}
+    <link rel="icon" href="{{ asset('/img/logo-app.svg') }}" type="image/svg+xml">
+    {{-- <link rel="shortcut-icon" href="{{ asset('/img/logo-app.svg') }}" type="image/svg+xml"> --}}
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <link href="{{ asset('css/app.css') }}?v={{config('app.version', '1')}}" rel="stylesheet">
+    <script src="{{ asset('js/app.js') }}?v={{config('app.version', '1')}}" defer></script>
 
 
     {{-- <link rel="icon" type="image/png" href="{{ url('/images/logo-app-16.png') }}" sizes="16x16">

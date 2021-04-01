@@ -186,7 +186,7 @@ export default {
     },
 
     mounted() {
-        console.log('menu', this.$store.getters.menu)
+        // console.log('menu', this.$store.getters.menu)
     },
 
     methods: {
